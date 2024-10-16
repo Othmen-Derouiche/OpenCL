@@ -1,4 +1,4 @@
-__kernel void game_of_life(__global const int* current,__global int* next,const int width,const int height){
+__kernel void game_of_life(__global const int* current,__global int* next,const int width,const int height,const int enable_periodic_grid){
     
     // Get the x and y coordinates of the current cell
     int x = get_global_id(0);
@@ -9,11 +9,22 @@ __kernel void game_of_life(__global const int* current,__global int* next,const 
         return;
     }
 
-    // Calculate the indices of the eight neighbors with wrap-around (toroidal)
-    int xm1 = (x - 1 + width) % width;
-    int xp1 = (x + 1) % width;
-    int ym1 = (y - 1 + height) % height;
-    int yp1 = (y + 1) % height;
+    // Calculate the indices of the eight neighbors 
+    int xm1,xp1,ym1,yp1;
+    if (enable_periodic_grid == 1) {
+        // Toroidal wrap-around behavior for periodic grid
+        xm1 = (x - 1 + width) % width;
+        xp1 = (x + 1) % width;
+        ym1 = (y - 1 + height) % height;
+        yp1 = (y + 1) % height;
+    } else {
+        // Non-periodic behavior: out-of-bound cells treated as dead
+        // If out-of-bounds, mark as -1
+        xm1 = (x - 1 < 0) ? -1 : (x - 1);            
+        xp1 = (x + 1 >= width) ? -1 : (x + 1);       
+        ym1 = (y - 1 < 0) ? -1 : (y - 1);            
+        yp1 = (y + 1 >= height) ? -1 : (y + 1);     
+    }
 
     // Calculate the linear indices of the neighbors
     int idx = y * width + x;

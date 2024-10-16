@@ -25,7 +25,27 @@ void clearTerminal() {
     // ANSI escape code to clear the terminal
     cout << "\033[2J\033[1;1H"; // Clear the screen and move cursor to the top left
 }
-
+void display(const int HEIGHT , const int WIDTH , int *current_grid){
+        for (int y = 0; y < HEIGHT; y++) {
+            for (int x = 0; x < WIDTH; x++) {
+                std::cout << (current_grid[y * WIDTH + x] ? "█" : "░"); // Full square for alive, empty square for dead
+            }
+            std::cout << "\n";
+        }
+        std::cout << "\n";
+}
+void set_glidder_pattern(const int WIDTH, int*current_grid){
+    current_grid[1 * WIDTH + 2] = 1;
+	current_grid[2 * WIDTH + 3] = 1;
+	current_grid[3 * WIDTH + 1] = 1;
+    current_grid[3 * WIDTH + 2] = 1;
+    current_grid[3 * WIDTH + 3] = 1;
+}
+void set_blinker_pattern(const int WIDTH, int*current_grid){
+    current_grid[2 * WIDTH + 1] = 1;
+    current_grid[2 * WIDTH + 2] = 1;
+    current_grid[2 * WIDTH + 3] = 1;
+}
 int main(int argc, char **argv)
 {
 	
@@ -54,27 +74,11 @@ int main(int argc, char **argv)
 
 	const int size = WIDTH * HEIGHT; 
 
-	/*
-	// Create buffers for OpenCL to hold input and output data
-	cl::Buffer a_buffer(*clu_Context, CL_MEM_READ_ONLY, size * sizeof(int)); 
-	cl::Buffer b_buffer(*clu_Context, CL_MEM_READ_ONLY, size * sizeof(int)); 
-	cl::Buffer c_buffer(*clu_Context, CL_MEM_WRITE_ONLY, size * sizeof(int)); 
-	*/
-
 	// Allocate memory on the compute device
     // Create two buffers for double buffering
     cl::Buffer buffer_current(*clu_Context, CL_MEM_READ_WRITE, WIDTH * HEIGHT * sizeof(int));
     cl::Buffer buffer_next(*clu_Context, CL_MEM_READ_WRITE, WIDTH * HEIGHT * sizeof(int));
 
-	/*
-	// Initialize host arrays
-	int* a = new int[size]; 
-	int* b = new int [size]; 
-	for (int i = 0 ; i < size; i++){ 
-		a[i] = 0 ; 
-		b[i] = i ; 
-	}
-	*/
 	// Initialize host grids with linear mapping
     int* current_grid = new int[WIDTH * HEIGHT](); 
     int* next_grid = new int[WIDTH * HEIGHT]();    
@@ -85,70 +89,35 @@ int main(int argc, char **argv)
         current_grid[i] = 0;
         next_grid[i] = 0;
     }
-	// Set up a glider pattern
-	/*
-	current_grid[1 * WIDTH + 2] = 1;
-    current_grid[2 * WIDTH + 3] = 1;
-    current_grid[3 * WIDTH + 1] = 1;
-    current_grid[3 * WIDTH + 2] = 1;
-    current_grid[3 * WIDTH + 3] = 1;
-	*/
+    int pattern ;
+    cout << "Choose Grid pattern : "<< endl << "For Glidder pattern press 1 "<< endl <<"For Blinker pattern press 2"<<endl;
+    cin >> pattern;
+    cout << endl;
+    if(pattern == 1)
+        set_glidder_pattern(WIDTH, current_grid);
+    else if(pattern == 2)
+        set_blinker_pattern(WIDTH, current_grid);
 
-	/*
-	current_grid[2 * WIDTH + 1] = 1;
-    current_grid[2 * WIDTH + 2] = 1;
-    current_grid[2 * WIDTH + 3] = 1;
-	*/
-	current_grid[1* WIDTH + 2] = 1;
-	current_grid[2 * WIDTH + 3] = 1;
-	current_grid[3 * WIDTH + 1] = 1;
-    current_grid[3 * WIDTH + 2] = 1;
-    current_grid[3 * WIDTH + 3] = 1;
-	cout << "-------------------------DISPLAY--------------------------"<< endl;
-    for (int y = 0; y < HEIGHT; y++) {
-        for (int x = 0; x < WIDTH; x++) {
-            std::cout << (current_grid[y * WIDTH + x] ? "█" : "░"); // Full square for alive, empty square for dead
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n";
-	/*
-	// Write the host arrays to the compute device buffers
-	clu_Queue->enqueueWriteBuffer(a_buffer, true, 0, size * sizeof(int), a); 
-	clu_Queue->enqueueWriteBuffer(b_buffer, true, 0, size * sizeof(int), b); 
-    delete[] a; // Free host memory for a
-	delete[] b ;
-	*/
+	cout << "-------------------------DISPLAY Initial grid--------------------------"<< endl;
+    display(HEIGHT , WIDTH ,current_grid);
+
 	// Write the initial grid to the device
     clu_Queue->enqueueWriteBuffer(buffer_current, true , 0, WIDTH * HEIGHT * sizeof(int), current_grid);
 
-	// Set kernel arguments
-	/*
-	kernel->setArg(0, a_buffer); 
-	kernel->setArg(1, b_buffer); 
-	kernel->setArg(2, c_buffer);
-	kernel->setArg(3, cl::Local(group_size * sizeof(int))); // Local memory for shared data
-	*/
+    // Get user input for enabling periodic grid behavior
+    int enable_periodic_grid;
+    cout << "Enter 1 for periodic grid enabling, or 0 for non-periodic grid: ";
+    cin >> enable_periodic_grid;
+    cout << endl;
 
-    // Set static kernel arguments that don't change within the loop
     kernel->setArg(2, WIDTH);
     kernel->setArg(3, HEIGHT);
+    kernel->setArg(4, enable_periodic_grid);
 
     // Define global and local work sizes
     cl::NDRange global(WIDTH, HEIGHT);
     cl::NDRange local(WIDTH, HEIGHT); // Adjust based on device's max work-group size
 
-	/*
-    // Read the results back from the device to host
-	int* c = new int[size]; 
-	clu_Queue ->enqueueReadBuffer(c_buffer, true, 0, size * sizeof(int), c);
-	
-	// Print the results
-	for (int i = 0 ; i<size ; i++){ 
-		std::cout << c[i] << "; "; 
-	}
-    delete[] c; // Free memory for the result array
-	*/
 // Simulation loop
     for (int j = 0; j< generations; j++) {
 
@@ -168,22 +137,13 @@ int main(int argc, char **argv)
         // Read back the current grid
         clu_Queue->enqueueReadBuffer(buffer_current, CL_TRUE, 0, WIDTH * HEIGHT * sizeof(int), current_grid);
 
-        // Clear the terminal (optional, for better visualization)
-        // Uncomment the following lines if you want to clear the terminal each generation
-    
-        //system("clear");        
+
 		// Clear the terminal using ANSI escape codes
-        //clearTerminal();
+        clearTerminal();
 
         // Plot the grid
         std::cout << "Display after " << j + 1 << " Generation :\n";
-        for (int y = 0; y < HEIGHT; y++) {
-            for (int x = 0; x < WIDTH; x++) {
-                std::cout << (current_grid[y * WIDTH + x] ? "█" : "░"); // Full square for alive, empty square for dead
-            }
-            std::cout << "\n";
-        }
-        std::cout << "\n";
+        display(HEIGHT , WIDTH ,current_grid);
 
         // Optional: Add a short delay for better visualization
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
