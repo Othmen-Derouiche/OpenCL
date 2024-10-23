@@ -1,4 +1,4 @@
-// ----------------------------------------------------------
+    // ----------------------------------------------------------
 
 #include <cassert>
 #include <cstdio>
@@ -49,7 +49,7 @@ void set_blinker_pattern(const int WIDTH, int*current_grid){
 int main(int argc, char **argv)
 {
 	
-	const char *clu_File = SRC_PATH "base.cl";  // path to file containing OpenCL kernel(s) code
+	const char *clu_File = SRC_PATH "Conway_Game_of_Life/base.cl";  // path to file containing OpenCL kernel(s) code
 
 	// Initialize OpenCL environment and sets up context and queue
 	cluInit();
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 	//
 	const int WIDTH = 5 ;
 	const int HEIGHT = 5 ; 
-	const int generations = 5;
+	const int generations = 20;
 
 	// allocate memory on the compute device 
 

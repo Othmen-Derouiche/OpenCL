@@ -1,0 +1,16 @@
+/home/asus/Documents/OpenCL/build/CMakeFiles/install/strip.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/install/local.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/install.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/list_install_components.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/rebuild_cache.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/base3.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/base2.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/edit_cache.dir
+/home/asus/Documents/OpenCL/build/CMakeFiles/base1.dir
+/home/asus/Documents/OpenCL/build/OpenCL-ICD-Loader/CMakeFiles/install/strip.dir
+/home/asus/Documents/OpenCL/build/OpenCL-ICD-Loader/CMakeFiles/install/local.dir
+/home/asus/Documents/OpenCL/build/OpenCL-ICD-Loader/CMakeFiles/edit_cache.dir
+/home/asus/Documents/OpenCL/build/OpenCL-ICD-Loader/CMakeFiles/install.dir
+/home/asus/Documents/OpenCL/build/OpenCL-ICD-Loader/CMakeFiles/list_install_components.dir
+/home/asus/Documents/OpenCL/build/OpenCL-ICD-Loader/CMakeFiles/rebuild_cache.dir
+/home/asus/Documents/OpenCL/build/OpenCL-ICD-Loader/CMakeFiles/OpenCL.dir
