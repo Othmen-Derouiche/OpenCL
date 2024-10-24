@@ -157,43 +157,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named base3
+# Target rules for targets named ex2
 
 # Build rule for target.
-base3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 base3
-.PHONY : base3
+ex2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ex2
+.PHONY : ex2
 
 # fast build rule for target.
-base3/fast:
-	$(MAKE) -f CMakeFiles/base3.dir/build.make CMakeFiles/base3.dir/build
-.PHONY : base3/fast
+ex2/fast:
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/build
+.PHONY : ex2/fast
 
 #=============================================================================
-# Target rules for targets named base2
+# Target rules for targets named ex1
 
 # Build rule for target.
-base2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 base2
-.PHONY : base2
+ex1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ex1
+.PHONY : ex1
 
 # fast build rule for target.
-base2/fast:
-	$(MAKE) -f CMakeFiles/base2.dir/build.make CMakeFiles/base2.dir/build
-.PHONY : base2/fast
-
-#=============================================================================
-# Target rules for targets named base1
-
-# Build rule for target.
-base1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 base1
-.PHONY : base1
-
-# fast build rule for target.
-base1/fast:
-	$(MAKE) -f CMakeFiles/base1.dir/build.make CMakeFiles/base1.dir/build
-.PHONY : base1/fast
+ex1/fast:
+	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/build
+.PHONY : ex1/fast
 
 #=============================================================================
 # Target rules for targets named OpenCL
@@ -208,32 +195,32 @@ OpenCL/fast:
 	$(MAKE) -f OpenCL-ICD-Loader/CMakeFiles/OpenCL.dir/build.make OpenCL-ICD-Loader/CMakeFiles/OpenCL.dir/build
 .PHONY : OpenCL/fast
 
-Conway_Game_of_Life/base.o: Conway_Game_of_Life/base.cpp.o
+Parallel_closest_pair_of_points/base.o: Parallel_closest_pair_of_points/base.cpp.o
 
-.PHONY : Conway_Game_of_Life/base.o
+.PHONY : Parallel_closest_pair_of_points/base.o
 
 # target to build an object file
-Conway_Game_of_Life/base.cpp.o:
-	$(MAKE) -f CMakeFiles/base2.dir/build.make CMakeFiles/base2.dir/Conway_Game_of_Life/base.cpp.o
-.PHONY : Conway_Game_of_Life/base.cpp.o
+Parallel_closest_pair_of_points/base.cpp.o:
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Parallel_closest_pair_of_points/base.cpp.o
+.PHONY : Parallel_closest_pair_of_points/base.cpp.o
 
-Conway_Game_of_Life/base.i: Conway_Game_of_Life/base.cpp.i
+Parallel_closest_pair_of_points/base.i: Parallel_closest_pair_of_points/base.cpp.i
 
-.PHONY : Conway_Game_of_Life/base.i
+.PHONY : Parallel_closest_pair_of_points/base.i
 
 # target to preprocess a source file
-Conway_Game_of_Life/base.cpp.i:
-	$(MAKE) -f CMakeFiles/base2.dir/build.make CMakeFiles/base2.dir/Conway_Game_of_Life/base.cpp.i
-.PHONY : Conway_Game_of_Life/base.cpp.i
+Parallel_closest_pair_of_points/base.cpp.i:
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Parallel_closest_pair_of_points/base.cpp.i
+.PHONY : Parallel_closest_pair_of_points/base.cpp.i
 
-Conway_Game_of_Life/base.s: Conway_Game_of_Life/base.cpp.s
+Parallel_closest_pair_of_points/base.s: Parallel_closest_pair_of_points/base.cpp.s
 
-.PHONY : Conway_Game_of_Life/base.s
+.PHONY : Parallel_closest_pair_of_points/base.s
 
 # target to generate assembly for a file
-Conway_Game_of_Life/base.cpp.s:
-	$(MAKE) -f CMakeFiles/base2.dir/build.make CMakeFiles/base2.dir/Conway_Game_of_Life/base.cpp.s
-.PHONY : Conway_Game_of_Life/base.cpp.s
+Parallel_closest_pair_of_points/base.cpp.s:
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/Parallel_closest_pair_of_points/base.cpp.s
+.PHONY : Parallel_closest_pair_of_points/base.cpp.s
 
 Parallel_scan/base.o: Parallel_scan/base.cpp.o
 
@@ -241,7 +228,7 @@ Parallel_scan/base.o: Parallel_scan/base.cpp.o
 
 # target to build an object file
 Parallel_scan/base.cpp.o:
-	$(MAKE) -f CMakeFiles/base3.dir/build.make CMakeFiles/base3.dir/Parallel_scan/base.cpp.o
+	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/Parallel_scan/base.cpp.o
 .PHONY : Parallel_scan/base.cpp.o
 
 Parallel_scan/base.i: Parallel_scan/base.cpp.i
@@ -250,7 +237,7 @@ Parallel_scan/base.i: Parallel_scan/base.cpp.i
 
 # target to preprocess a source file
 Parallel_scan/base.cpp.i:
-	$(MAKE) -f CMakeFiles/base3.dir/build.make CMakeFiles/base3.dir/Parallel_scan/base.cpp.i
+	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/Parallel_scan/base.cpp.i
 .PHONY : Parallel_scan/base.cpp.i
 
 Parallel_scan/base.s: Parallel_scan/base.cpp.s
@@ -259,7 +246,7 @@ Parallel_scan/base.s: Parallel_scan/base.cpp.s
 
 # target to generate assembly for a file
 Parallel_scan/base.cpp.s:
-	$(MAKE) -f CMakeFiles/base3.dir/build.make CMakeFiles/base3.dir/Parallel_scan/base.cpp.s
+	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/Parallel_scan/base.cpp.s
 .PHONY : Parallel_scan/base.cpp.s
 
 common/clutils.o: common/clutils.cpp.o
@@ -268,9 +255,8 @@ common/clutils.o: common/clutils.cpp.o
 
 # target to build an object file
 common/clutils.cpp.o:
-	$(MAKE) -f CMakeFiles/base3.dir/build.make CMakeFiles/base3.dir/common/clutils.cpp.o
-	$(MAKE) -f CMakeFiles/base2.dir/build.make CMakeFiles/base2.dir/common/clutils.cpp.o
-	$(MAKE) -f CMakeFiles/base1.dir/build.make CMakeFiles/base1.dir/common/clutils.cpp.o
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/common/clutils.cpp.o
+	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/common/clutils.cpp.o
 .PHONY : common/clutils.cpp.o
 
 common/clutils.i: common/clutils.cpp.i
@@ -279,9 +265,8 @@ common/clutils.i: common/clutils.cpp.i
 
 # target to preprocess a source file
 common/clutils.cpp.i:
-	$(MAKE) -f CMakeFiles/base3.dir/build.make CMakeFiles/base3.dir/common/clutils.cpp.i
-	$(MAKE) -f CMakeFiles/base2.dir/build.make CMakeFiles/base2.dir/common/clutils.cpp.i
-	$(MAKE) -f CMakeFiles/base1.dir/build.make CMakeFiles/base1.dir/common/clutils.cpp.i
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/common/clutils.cpp.i
+	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/common/clutils.cpp.i
 .PHONY : common/clutils.cpp.i
 
 common/clutils.s: common/clutils.cpp.s
@@ -290,37 +275,9 @@ common/clutils.s: common/clutils.cpp.s
 
 # target to generate assembly for a file
 common/clutils.cpp.s:
-	$(MAKE) -f CMakeFiles/base3.dir/build.make CMakeFiles/base3.dir/common/clutils.cpp.s
-	$(MAKE) -f CMakeFiles/base2.dir/build.make CMakeFiles/base2.dir/common/clutils.cpp.s
-	$(MAKE) -f CMakeFiles/base1.dir/build.make CMakeFiles/base1.dir/common/clutils.cpp.s
+	$(MAKE) -f CMakeFiles/ex2.dir/build.make CMakeFiles/ex2.dir/common/clutils.cpp.s
+	$(MAKE) -f CMakeFiles/ex1.dir/build.make CMakeFiles/ex1.dir/common/clutils.cpp.s
 .PHONY : common/clutils.cpp.s
-
-opencl-base-code/base.o: opencl-base-code/base.cpp.o
-
-.PHONY : opencl-base-code/base.o
-
-# target to build an object file
-opencl-base-code/base.cpp.o:
-	$(MAKE) -f CMakeFiles/base1.dir/build.make CMakeFiles/base1.dir/opencl-base-code/base.cpp.o
-.PHONY : opencl-base-code/base.cpp.o
-
-opencl-base-code/base.i: opencl-base-code/base.cpp.i
-
-.PHONY : opencl-base-code/base.i
-
-# target to preprocess a source file
-opencl-base-code/base.cpp.i:
-	$(MAKE) -f CMakeFiles/base1.dir/build.make CMakeFiles/base1.dir/opencl-base-code/base.cpp.i
-.PHONY : opencl-base-code/base.cpp.i
-
-opencl-base-code/base.s: opencl-base-code/base.cpp.s
-
-.PHONY : opencl-base-code/base.s
-
-# target to generate assembly for a file
-opencl-base-code/base.cpp.s:
-	$(MAKE) -f CMakeFiles/base1.dir/build.make CMakeFiles/base1.dir/opencl-base-code/base.cpp.s
-.PHONY : opencl-base-code/base.cpp.s
 
 # Help Target
 help:
@@ -333,23 +290,19 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... base3"
-	@echo "... base2"
 	@echo "... edit_cache"
-	@echo "... base1"
+	@echo "... ex2"
+	@echo "... ex1"
 	@echo "... OpenCL"
-	@echo "... Conway_Game_of_Life/base.o"
-	@echo "... Conway_Game_of_Life/base.i"
-	@echo "... Conway_Game_of_Life/base.s"
+	@echo "... Parallel_closest_pair_of_points/base.o"
+	@echo "... Parallel_closest_pair_of_points/base.i"
+	@echo "... Parallel_closest_pair_of_points/base.s"
 	@echo "... Parallel_scan/base.o"
 	@echo "... Parallel_scan/base.i"
 	@echo "... Parallel_scan/base.s"
 	@echo "... common/clutils.o"
 	@echo "... common/clutils.i"
 	@echo "... common/clutils.s"
-	@echo "... opencl-base-code/base.o"
-	@echo "... opencl-base-code/base.i"
-	@echo "... opencl-base-code/base.s"
 .PHONY : help
 
 

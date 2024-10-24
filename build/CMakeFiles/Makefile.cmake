@@ -129,8 +129,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/base3.dir/DependInfo.cmake"
-  "CMakeFiles/base2.dir/DependInfo.cmake"
-  "CMakeFiles/base1.dir/DependInfo.cmake"
+  "CMakeFiles/ex2.dir/DependInfo.cmake"
+  "CMakeFiles/ex1.dir/DependInfo.cmake"
   "OpenCL-ICD-Loader/CMakeFiles/OpenCL.dir/DependInfo.cmake"
   )

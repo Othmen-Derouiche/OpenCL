@@ -152,7 +152,7 @@ alloca.h
 cstring
 -
 
-/home/asus/Documents/OpenCL/Parallel_scan/base.cpp
+/home/asus/Documents/OpenCL/Parallel_closest_pair_of_points/base.cpp
 cassert
 -
 cstdio
@@ -161,22 +161,20 @@ cstdlib
 -
 cmath
 -
+ctime
+-
 iostream
--
-fstream
--
-sstream
--
-iomanip
--
-chrono
--
-thread
 -
 vector
 -
+algorithm
+-
+limits
+-
+random
+-
 clutils.h
-/home/asus/Documents/OpenCL/Parallel_scan/clutils.h
+/home/asus/Documents/OpenCL/Parallel_closest_pair_of_points/clutils.h
 
 /home/asus/Documents/OpenCL/common/clutils.cpp
 cstdio

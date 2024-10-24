@@ -1,4 +1,4 @@
-__kernel void parallel_scan(__global int* input, __global int* output, const int step, const int N) {
+__kernel void parallel_scan(__global float* input, __global float* output, const int step, const int N) {
     int gid = get_global_id(0);
 
     if (gid >= step && gid < N) {

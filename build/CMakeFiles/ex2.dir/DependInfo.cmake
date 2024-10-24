@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/asus/Documents/OpenCL/Parallel_scan/base.cpp" "/home/asus/Documents/OpenCL/build/CMakeFiles/base3.dir/Parallel_scan/base.cpp.o"
-  "/home/asus/Documents/OpenCL/common/clutils.cpp" "/home/asus/Documents/OpenCL/build/CMakeFiles/base3.dir/common/clutils.cpp.o"
+  "/home/asus/Documents/OpenCL/Parallel_closest_pair_of_points/base.cpp" "/home/asus/Documents/OpenCL/build/CMakeFiles/ex2.dir/Parallel_closest_pair_of_points/base.cpp.o"
+  "/home/asus/Documents/OpenCL/common/clutils.cpp" "/home/asus/Documents/OpenCL/build/CMakeFiles/ex2.dir/common/clutils.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
